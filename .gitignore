@@ -1,0 +1,4 @@
+.idea/
+*.jpg
+__pycache__
+*.html
