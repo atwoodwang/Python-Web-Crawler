@@ -2,7 +2,7 @@ import html_downloader
 import html_outputer
 import html_parser
 import url_manager
-
+import sys
 
 class SpiderMain(object):
     def __init__(self):
@@ -33,7 +33,15 @@ class SpiderMain(object):
 
         self.outputer.output_html()
 
-if __name__=='__main__':
-    root_url="http://baike.baidu.com/view/10347500.htm"
+def main(argv):
+    try:
+        root_url=argv[1]
+    except IndexError:
+        print("Usage: python spider_main.py [URL]")
+        sys.exit()
     obj_spider=SpiderMain()
     obj_spider.craw(root_url)
+
+
+if __name__=='__main__':
+    main(sys.argv)

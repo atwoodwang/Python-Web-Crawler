@@ -1,3 +1,5 @@
+import sys
+
 import html_downloader
 import html_outputer
 import html_parser
@@ -31,7 +33,15 @@ class SpiderMain(object):
             except:
                 print('craw failed')
 
-if __name__=='__main__':
-    root_url="http://tieba.baidu.com/p/2369602689?pn=1"
+def main(argv):
+    try:
+        root_url=argv[1]
+    except IndexError:
+        print("Usage: python spider_main.py [URL]")
+        sys.exit()
+    root_url+='?pn=1'
     obj_spider=SpiderMain()
     obj_spider.craw(root_url)
+
+if __name__=='__main__':
+    main(sys.argv)
